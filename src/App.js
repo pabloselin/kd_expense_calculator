@@ -139,24 +139,24 @@ function App() {
   return (
     <div className="kd_expense_calculator_app">
       {calculate === true ? (
-        <div className="expense_table">
+        <div className="kd_expense_table">
           <h1>Calculadora de gasto energético digital</h1>
-          <span>
-            (Valores aproximados calculados según ubicación geográfica, servidor
+          <span className="kd_detail">
+            (Valores aproximados calculados según ubicación, servidor
             y dispositivo)
           </span>
 
           {isCalculated && (
             <>
-              <p className="equivalence">
+              <p className="kd_equivalence">
                 Gasto energético: {co2e.toFixed(2)} de co2e (equivalencia de
                 carbono)
               </p>
 
               {activity && equivalence && (
-                <p>
+                <p className="kd_activity">
                   El{" "}
-                  <strong>{(co2e / equivalence[activity].cost).toFixed(4)}%</strong>{" "}
+                  <strong>{((co2e * 100) / equivalence[activity].cost).toFixed(4)}%</strong>{" "}
                   de {equivalence[activity].activity}
                 </p>
               )}
@@ -172,13 +172,14 @@ function App() {
             </>
           )}
 
-          <p>IP: {ip}</p>
+          <p className="kd_ip">IP: {ip}</p>
           <p>
             Emisión de carbono por cada kilowatt/hora en tu país:{" "}
             {intensity && intensity.carbon_intensity}grs
+            <span className="kd_detail">Los valores pueden cambiar según el ranking de emisión energética de tu ubicación</span>
           </p>
 
-          <div className="desglose">
+          <div className="kd_desglose">
             <h2>Desglose de transferencia de datos</h2>
             <p>
               Tamaño de todos los elementos de la página:{" "}
