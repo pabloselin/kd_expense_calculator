@@ -127,7 +127,7 @@ function App() {
               </p>
 
               <p className="kd_equivalence">
-                Gasto energético: <strong>{co2e.toFixed(2)} de co2e</strong> (equivalencia de
+                Gasto energético: <strong>{co2e.toFixed(2)}gr. de co2e</strong> (equivalencia de
                 carbono)
               </p>
 
