@@ -21,8 +21,7 @@ function App() {
   // const [intensity, setIntensity] = useState(null);
 
   const [activity, setActivity] = useState(0);
-
- 
+  const [pickActivity, setPickActivity] = useState(true);
   const [totalSize, setTotalSize] = useState(htmlLength);
 
   const [co2e, setCo2e] = useState(0);
@@ -52,11 +51,17 @@ function App() {
   // }, [ip]);
 
   useEffect(() => {
-    let min = 0;
-    let max = equivalence.length;
-    let randomActivity = Math.floor(Math.random() * (max - min)) + min;
-    setActivity(randomActivity);
-  }, [isCalculated, equivalence]);
+    if(pickActivity === true) {
+      const setRandomActivity = () => {
+        let min = 0;
+        let max = equivalence.length;
+        let randomActivity = Math.floor(Math.random() * (max - min)) + min;
+        return randomActivity;
+      };
+      setActivity(() => setRandomActivity());
+      setPickActivity(false);
+    }
+  }, [isCalculated, equivalence, pickActivity]);
 
   useEffect(() => {
     const getFileStatsfromArray = async (urls) => {
@@ -110,7 +115,8 @@ function App() {
     <div className="kd_expense_calculator_app">
       {calculate === true ? (
         <div className="kd_expense_table">
-          <h1>Calculadora de gasto energético digital</h1>
+          <h1>Energía gastada al visitar esta página...</h1>
+          <span className="kd_url">{window.location.href}</span>
           <span className="kd_detail">
             (Valores aproximados calculados según ubicación, servidor y
             dispositivo)
@@ -119,16 +125,19 @@ function App() {
           {isCalculated && (
             <>
               <p className="kd_activity">
-                El{" "}
+                Tu visita a esta página tiene un costo equivalente al{" "}
                 <strong>
                   {((co2e * 100) / equivalence[activity].cost).toFixed(4)}%
                 </strong>{" "}
-                de {equivalence[activity].activity}
+                de {equivalence[activity].activity}{" "}
+                <span className="reload" onClick={() => (setPickActivity(!pickActivity))}>
+                  [otra]
+                </span>
               </p>
 
               <p className="kd_equivalence">
-                Gasto energético: <strong>{co2e.toFixed(2)}gr. de co2e</strong> (equivalencia de
-                carbono)
+                Gasto energético: <strong>{co2e.toFixed(2)}gr. de co2e</strong>{" "}
+                (equivalencia de carbono)
               </p>
 
               <p>
@@ -146,8 +155,8 @@ function App() {
             <p>
               Tamaño de todos los elementos de la página:{" "}
               <strong>{totalSize && totalSize / 1000}kb</strong>
+              <span class="kd_detail">(Incluyendo imágenes, estilos y scripts)</span>
             </p>
-            
           </div>
         </div>
       ) : (

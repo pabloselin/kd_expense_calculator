@@ -1,5 +1,12 @@
 [
   { "activity": "hervir una taza de té en un hervidor eléctrico", "cost": 21 },
-  { "activity": "calorías de 3 km. en bici alimentado por plátanos", "cost": 65 },
-  { "activity": "una caña de cerveza", "cost": 300}
+  { "activity": "la energía gastada al recorrer 3 kms. en bicicleta alimentado por plátanos", "cost": 65 },
+  { "activity": "la energía gastada al recorrer 3 kms. en bicicleta alimentado por hamburguesas con queso", "cost": 260 },
+  { "activity": "poner una lavadora a 30º y secarla en el colgador", "cost": 600 },
+  { "activity": "producir un plátano", "cost": 80 },
+  { "activity": "producir una taza grande de café con leche de vaca", "cost": 340 },
+  { "activity": "la energía gastada al recorrer 3 kms. en bicicleta alimentado por plátanos", "cost": 65 },
+  { "activity": "imprimir un periódico con papel reciclado", "cost": 400},
+  { "activity": "producir un vaso de leche de soya", "cost": 75 },
+  { "activity": "producir un vaso de jugo de naranja", "cost": 57 }
 ]
